@@ -11,6 +11,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'code-qr-brrs',
+    loadChildren: () => import('./code-qr-brrs/code-qr-brrs.module').then( m => m.CodeQrBrrsPageModule)
+  },
+  {
+    path: 'login-github',
+    loadChildren: () => import('./login-github/login-github.module').then( m => m.LoginGithubPageModule)
+  },
+  {
+    path: 'login-google',
+    loadChildren: () => import('./login-google/login-google.module').then( m => m.LoginGooglePageModule)
+  },
 ];
 
 @NgModule({

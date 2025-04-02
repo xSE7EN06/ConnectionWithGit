@@ -1,20 +1,83 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> <!-- Ahora el botón abre el menú -->
+    </ion-buttons>
+    <ion-title>Menú de Hamburguesas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content [fullscreen]="true">
+  <h3 class="ion-text-center"><strong>Calcular total de hamburguesa</strong></h3>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8">
+        <ion-list>
+          <ion-item lines="none">
+            <ion-label>Tipo de hamburgesa</ion-label>
+            <ion-select [(ngModel)]="hamburgesa">
+              <ion-select-option value="doble">Doble</ion-select-option>
+              <ion-select-option value="triple">Triple</ion-select-option>
+              <ion-select-option value="especial">Especial</ion-select-option>
+            </ion-select>
+          </ion-item>
+      
+          <ion-item lines="none">
+            <ion-label position="stacked" class="text">Número de hamburguesas</ion-label>
+            <br>
+            <ion-input fill="outline" [(ngModel)]="numeroHamburguesas" type="number"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col size="4" class="ion-text-center">
+        <img src="../../assets/icon/burger.png" alt="Imagen de hamburguesa" style="width: 100px; height: 80px;">
+      </ion-col>
+    </ion-row>
+
+    <!-- Complementos y Tipo de Pago en una nueva fila -->
+    <ion-row class="ion-margin-top">
+      <ion-col size="12">
+        <form [formGroup]="complementosForm">
+        <ion-item lines="none">
+          <ion-label position="stacked" class="text">Complementos</ion-label>
+          <br>
+          <ion-radio-group>
+            <ion-item lines="none">
+              <ion-checkbox slot="start" formControlName="papas"></ion-checkbox>
+              <ion-label>papas</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-checkbox slot="start" formControlName="aros_cebolla"></ion-checkbox>
+              <ion-label>aros de cebolla</ion-label>
+            </ion-item>
+          </ion-radio-group>
+        </ion-item>
+      </form>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-item lines="none">
+          <ion-label position="stacked" class="text">Tipo de pago</ion-label>
+          <br>
+          <ion-radio-group [(ngModel)]="tipoPago">
+            <ion-item lines="none">
+              <ion-radio slot="start" value="tarjeta"></ion-radio>
+              <ion-label>Tarjeta</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-radio slot="start" value="efectivo"></ion-radio>
+              <ion-label>Efectivo</ion-label>
+            </ion-item>
+          </ion-radio-group>
+        </ion-item>   
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="block" (click)="generarPago()">Calcular</ion-button>
+  <label class="ion-text-center" class="text-aling"><strong>Total a pagar $ {{total}}</strong></label>
+
+  <div id="paypal-button-container"></div>
 </ion-content>

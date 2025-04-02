@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> <!-- Ahora el botón abre el menú -->
+    </ion-buttons>
+    <ion-title>Iniciar sesión con google</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <p>{{user}}</p>
+  <ion-button expand="block" mode="ios" (click)="login()">login</ion-button>
+</ion-content>

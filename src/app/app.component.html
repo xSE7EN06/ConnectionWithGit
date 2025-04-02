@@ -1,3 +1,53 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <!-- Menú lateral -->
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-menu-toggle auto-hide="true">
+        <ion-item [button]="true" routerLink="/home">
+          <ion-icon name="home-outline" slot="start"></ion-icon>
+          <ion-label>Inicio</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item [button]="true" routerLink="/login-google" routerDirection="root">
+          <ion-icon name="logo-google" slot="start"></ion-icon>
+          <ion-label>Login with Google</ion-label>
+        </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="true">
+        <ion-item [button]="true" routerLink="/perfil" routerDirection="root">
+          <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+          <ion-label>Cuenta</ion-label>
+        </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="true">
+        <ion-item [button]="true" routerLink="/login-github" routerDirection="root">
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          <ion-label>Login With Github</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item [button]="true" routerLink="/code-qr-brrs" routerDirection="root">
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          <ion-label>Codigo de Barras y QR</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Contenido principal -->
+  <div class="ion-page" id="main-content">
+    <ion-router-outlet></ion-router-outlet>
+  </div>
 </ion-app>
